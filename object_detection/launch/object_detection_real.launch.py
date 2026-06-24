@@ -60,7 +60,7 @@ def generate_launch_description():
             description="path to the yolo model directory",
         ),
         DeclareLaunchArgument(
-            "model", default_value="yolov5l6", description="yolo model name"
+            "model", default_value="yolov5s6", description="yolo model name"
         ),
     ]
 
@@ -104,7 +104,7 @@ def generate_launch_description():
                     # --- deployment-specific (override the shared config) ---
                     {
                         "camera_topic": PathJoinSubstitution(
-                            [LaunchConfiguration("input_camera_name"), "image/compressed"]
+                            [LaunchConfiguration("input_camera_name"), "image_rect/compressed"]
                         )
                     },
                     {
