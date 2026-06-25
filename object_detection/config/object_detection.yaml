@@ -8,12 +8,12 @@
   ros__parameters:
     # --- detection / projection ---
     model_method: "hdbscan"
-    confident: 0.5                     # detection score threshold
+    confident: 0.3 # 0.5                     # detection score threshold
     iou: 0.1                           # NMS IoU threshold (sim overrides to 0.0)
     project_object_points_to_image: true
     project_all_points_to_image: false
     camera_lidar_sync_queue_size: 10
-    camera_lidar_sync_slop: 0.1
+    camera_lidar_sync_slop: 0.2
 
     # --- ground filter ---
     ground_percentage: 25

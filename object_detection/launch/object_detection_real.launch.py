@@ -46,7 +46,7 @@ def generate_launch_description():
         ),
         DeclareLaunchArgument(
             "object_detection_classes",
-            default_value="[39]",
+            default_value="[24, 25, 11, 74, 39]",
             description="List of the ids of classes for detection (COCO dataset)",
         ),
         DeclareLaunchArgument(
@@ -66,24 +66,24 @@ def generate_launch_description():
 
     # Debayer the image (conditionally included)
     debayer_image_group = GroupAction(
-    [
-        IncludeLaunchDescription(
-            PythonLaunchDescriptionSource(
-                PathJoinSubstitution(
-                    [
-                        FindPackageShare("object_detection"),
-                        "launch",
-                        "debayer.launch.py",
-                    ]
-                )
-            ),
-            condition=IfCondition(LaunchConfiguration("debayer_image")),
-            launch_arguments=[
-                ("input_camera_name", LaunchConfiguration("input_camera_name"))
-            ],
-        )
-    ]
-)
+        [
+            IncludeLaunchDescription(
+                PythonLaunchDescriptionSource(
+                    PathJoinSubstitution(
+                        [
+                            FindPackageShare("object_detection"),
+                            "launch",
+                            "debayer.launch.py",
+                        ]
+                    )
+                ),
+                condition=IfCondition(LaunchConfiguration("debayer_image")),
+                launch_arguments=[
+                    ("input_camera_name", LaunchConfiguration("input_camera_name"))
+                ],
+            )
+        ]
+    )
 
     # Shared tuning params (algorithm/clustering/output topics). Single source of
     # truth; deployment-specific params below override it.
