@@ -104,7 +104,7 @@ def generate_launch_description():
                     # --- deployment-specific (override the shared config) ---
                     {
                         "camera_topic": PathJoinSubstitution(
-                            [LaunchConfiguration("input_camera_name"), "image_rect/compressed"]
+                            [LaunchConfiguration("input_camera_name"), "image_raw"]
                         )
                     },
                     {
